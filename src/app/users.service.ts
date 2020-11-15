@@ -15,6 +15,10 @@ export class UsersService {
     return this.usersObs$;
   }
 
+  getUser(id) {
+    return this.users.find((user) => user.id == id);
+  }
+
   deleteUser(id) {
     this.users = this.users.filter((user) => user.id != id);
     this.usersObs$.next(this.users);

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { UsersService } from 'src/app/users.service';
 
 @Component({
@@ -11,10 +13,11 @@ export class UserComponent {
   @Input() user;
   @Output() clickUser = new EventEmitter();
 
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   onClickUser() {
     this.clickUser.emit(this.user.id);
+    this.router.navigate(['users', this.user.id]);
   }
 
   onDelete() {
