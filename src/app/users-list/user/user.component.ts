@@ -5,8 +5,9 @@ import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-user',
-  template: `<p>my Id : {{ user.id }} , my name : {{ user.name }}</p>
+  template: `<p>my Id : {{ user.id }}</p>
     <button (click)="onClickUser()">select me</button>
+    <button (click)="onClickUserWithoutId()">select me(without id)</button>
     <button (click)="onDelete()">delete me!</button> `,
 })
 export class UserComponent {
@@ -18,6 +19,12 @@ export class UserComponent {
   onClickUser() {
     this.clickUser.emit(this.user.id);
     this.router.navigate(['users', this.user.id]);
+  }
+
+  onClickUserWithoutId() {
+    this.router.navigate(['users', this.user.id], {
+      queryParams: { userId: false },
+    });
   }
 
   onDelete() {

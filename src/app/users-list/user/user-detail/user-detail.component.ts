@@ -10,6 +10,7 @@ import { UsersService } from 'src/app/users.service';
 export class UserDetailComponent implements OnInit {
   user;
   userId: number;
+  showId: boolean = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,6 +23,10 @@ export class UserDetailComponent implements OnInit {
     // });
 
     this.userId = this.activatedRoute.snapshot.params.id;
+    this.showId =
+      this.activatedRoute.snapshot.queryParams.userId === 'false' ? false : true;
+    console.log(this.showId);
+
     this.user = this.usersSerivce.getUser(this.userId);
   }
 }
