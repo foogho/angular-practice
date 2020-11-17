@@ -40,6 +40,6 @@ export class UserComponent {
   }
 
   onDelete() {
-    this.usersService.deleteUser(this.user.id);
+    // this.usersService.deleteUser(this.user.id);
   }
 }

@@ -17,7 +17,10 @@ export class UsersService {
     return this.httpClient.get(this.apiUrl + '/' + id);
   }
 
-  deleteUser(id) {
-
+  addUser(user) {
+    return this.httpClient.post(
+      'https://jsonplaceholder.typicode.com/users',
+      user
+    );
   }
 }

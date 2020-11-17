@@ -16,7 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { UserDetailComponent } from './users-list/user/user-detail/user-detail.component';
 import { AddUserComponent } from './users-list/user/add-user/add-user.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

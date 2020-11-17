@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-add-user',
@@ -7,11 +8,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./add-user.component.css'],
 })
 export class AddUserComponent implements OnInit {
-  constructor() {}
+  userForm: FormGroup;
 
-  ngOnInit(): void {}
+  constructor(private userSerivce: UsersService) {}
 
-  onSubmit(form: NgForm) {
-    console.log(form);
+  ngOnInit(): void {
+    this.userForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      name: new FormControl(null, [Validators.required]),
+    });
+  }
+
+  onSubmit() {
+    this.userSerivce
+      .addUser(this.userForm.value)
+      .subscribe((value) => console.log(value));
   }
 }

@@ -1,4 +1,5 @@
-<form #f="ngForm">
+<!-- template-driven -->
+<!-- <form #f="ngForm">
   <mat-form-field appearance="legacy">
     <mat-label>email</mat-label>
     <input matInput placeholder="your user email" ngModel name="email" email/>
@@ -15,6 +16,30 @@
     color="primary"
     (click)="onSubmit(f)"
     [disabled]="f.invalid"
+  >
+    submit!
+  </button>
+</form> -->
+
+<!-- reactive-forms -->
+<form [formGroup]="userForm">
+  <mat-form-field appearance="legacy">
+    <mat-label>email</mat-label>
+    <input matInput placeholder="your user email" formControlName="email" />
+    <mat-error>invalid email</mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="legacy">
+    <mat-label>name</mat-label>
+    <input matInput placeholder="your user name" formControlName="name" />
+    <mat-error>its required</mat-error>
+  </mat-form-field>
+  <br />
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="userForm.invalid"
   >
     submit!
   </button>
