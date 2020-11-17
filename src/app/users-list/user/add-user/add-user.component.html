@@ -1,0 +1,21 @@
+<form #f="ngForm">
+  <mat-form-field appearance="legacy">
+    <mat-label>email</mat-label>
+    <input matInput placeholder="your user email" ngModel name="email" email/>
+    <mat-error>invalid email</mat-error>
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="legacy">
+    <mat-label>name</mat-label>
+    <input matInput placeholder="your user name" ngModel name="name" />
+  </mat-form-field>
+  <br />
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit(f)"
+    [disabled]="f.invalid"
+  >
+    submit!
+  </button>
+</form>
