@@ -1,4 +1,6 @@
 <h1>User Detail Component!</h1>
 
-<p>name : {{ user.name }}</p>
-<p *ngIf="showId">id : {{ user.id }}</p>
+<div *ngIf="user">
+  <p>name : {{ user.name }}</p>
+  <p *ngIf="showId">id : {{ user.id }}</p>
+</div>

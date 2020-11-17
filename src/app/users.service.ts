@@ -1,26 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  users = [
-    { id: 1, name: 'Ali' },
-    { id: 2, name: 'Mohammad' },
-    { id: 3, name: 'Mazaher' },
-  ];
+  apiUrl = 'https://jsonplaceholder.typicode.com/users';
 
-  usersObs$ = new BehaviorSubject(this.users);
+  constructor(private httpClient: HttpClient) {}
 
   getUsers() {
-    return this.usersObs$;
+    return this.httpClient.get(this.apiUrl);
   }
 
   getUser(id) {
-    return this.users.find((user) => user.id == id);
+    return this.httpClient.get(this.apiUrl + '/' + id);
   }
 
   deleteUser(id) {
-    this.users = this.users.filter((user) => user.id != id);
-    this.usersObs$.next(this.users);
+
   }
 }

@@ -5,10 +5,22 @@ import { UsersService } from 'src/app/users.service';
 
 @Component({
   selector: 'app-user',
-  template: `<p>my Id : {{ user.id }}</p>
-    <button (click)="onClickUser()">select me</button>
-    <button (click)="onClickUserWithoutId()">select me(without id)</button>
-    <button (click)="onDelete()">delete me!</button> `,
+  template: `<p>Id : {{ user.id }}</p>
+    <button mat-raised-button (click)="onClickUser()" [color]="'primary'">
+      select me
+    </button>
+    <button
+      mat-raised-button
+      (click)="onClickUserWithoutId()"
+      style="margin-left : 5px"
+    >
+      select me(without id)
+    </button> `,
+    styles : [`
+      p {
+        margin-top : 10px
+      }
+    `],
 })
 export class UserComponent {
   @Input() user;

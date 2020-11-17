@@ -24,9 +24,12 @@ export class UserDetailComponent implements OnInit {
 
     this.userId = this.activatedRoute.snapshot.params.id;
     this.showId =
-      this.activatedRoute.snapshot.queryParams.userId === 'false' ? false : true;
-    console.log(this.showId);
+      this.activatedRoute.snapshot.queryParams.userId === 'false'
+        ? false
+        : true;
 
-    this.user = this.usersSerivce.getUser(this.userId);
+    this.usersSerivce
+      .getUser(this.userId)
+      .subscribe((user) => (this.user = user));
   }
 }
